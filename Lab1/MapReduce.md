@@ -24,7 +24,7 @@ TL;DR -- Google's engineers build a model that implements the split and dispatch
 
 
 
-![image-20210605161416213](..\image\MapReduce.png)
+![MapReduce](../image/MapReduce.png)
 
 ​	
 
@@ -66,7 +66,7 @@ Claim: Below is all my own solution, and maybe happen to pass all tests. :)
 
 + About lambda function with goroutine
 
-  ![image-20210605170643446](..\image\exampleCode.png)
+  ![exampleCode](../image/exampleCode.png)
 
   ​											 Use my goroutine function for example*
 
