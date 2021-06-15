@@ -8,7 +8,7 @@
 * Raft Basics
   * Contain 3 kinds of servers : Follower, Candidate, Leader
 
-![raftBasic](../image/raft basic.png)
+![raftBasic](../image/raftBasic.png)
 
 * The Leader will be elected for each <**term**>, and term is the basic unit served as a Timer to denote the up-to-date log's time stamp
 
@@ -88,5 +88,5 @@ func Make(...) *Raft{
   * when call RPC, you should be aware of that caller will congest until RPC returns a true or false( which will take a **long time**), a good way to solve this is create a goroutine (For HeartBeat or RequestVote). To find this congestion took me long time repeating running test, I hope you won't.
 * A simple script test of run 20 times 'go -test run 2A' 
 
-![Lab2ATest](../image/Lab2A test.png)
+![Lab2ATest](../image/Lab2ATest.png)
 
