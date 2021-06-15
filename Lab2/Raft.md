@@ -4,9 +4,9 @@
     Paper Topics
 </h2>
 
-* Start with a Raft Protocol paper, [<In Search of an Understandable Consensus Alogorithm>]( http://nil.csail.mit.edu/6.824/2020/labs/lab-raft.html) , Also you can find Chinese version  [here](https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md#51-raft-%E5%9F%BA%E7%A1%80)
+* Start with a Raft Protocol paper, [In Search of an Understandable Consensus Alogorithm]( http://nil.csail.mit.edu/6.824/2020/labs/lab-raft.html) , Also you can find Chinese version  [here](https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md#51-raft-%E5%9F%BA%E7%A1%80)
 * Raft Basics
-  * Contain 3 kinds of servers : Follower, Candidate, Leader![QQ截图20210615133526](..\image\raft basic.png)
+  * Contain 3 kinds of servers : Follower, Candidate, Leader![raft basic](../image/raft basic.png)
   * The Leader will be elected for each <**term**>, and term is the basic unit served as a Timer to denote the up-to-date log's time stamp
 * Leader Election
   * Using the *election timeout* mechanism to make *Follower* begin a new round elction
@@ -83,5 +83,5 @@ func Make(...) *Raft{
   * when call RPC, you should be aware of that caller will congest until RPC returns a true or false( which will take a **long time**), a good way to solve this is create a goroutine (For HeartBeat or RequestVote). To find this congestion took me long time repeating running test, I hope you won't.
 * A simple script test of run 20 times 'go -test run 2A' 
 
-![Lab2A test](..\image\Lab2A test.png)
+![Lab2A test](../image/Lab2A test.png)
 
