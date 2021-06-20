@@ -66,6 +66,7 @@ func Make(...) *Raft{
         // if received Leader's HeartBeat then Sleep, nor begin a new election
         time.Sleep()
         if !heartBeatChecked() && !isLeader(){
+            //timeOutElection part
             for each server in peers
             do
             	go sendRequestVote(server)// need set a timeout thread to makesure no longterm waiting
@@ -82,11 +83,51 @@ func Make(...) *Raft{
 }
 ```
 
-* Hints
-  * MUST follow which variables paper described in data structure
-  * set mutex whenever there is a multithread R/W condition
-  * when call RPC, you should be aware of that caller will congest until RPC returns a true or false( which will take a **long time**), a good way to solve this is create a goroutine (For HeartBeat or RequestVote). To find this congestion took me long time repeating running test, I hope you won't.
+<h3>Hints
+
+* MUST follow which variables paper described in data structure
+* set mutex whenever there is a multithread R/W condition
+* when call RPC, you should be aware of that caller will congest until RPC returns a true or false( which will take a **long time**), a good way to solve this is create a goroutine (For HeartBeat or RequestVote). To find this congestion took me long time repeating running test, I hope you won't.
+
 * A simple script test of run 20 times 'go -test run 2A' 
 
 ![Lab2ATest](../image/Lab2ATest.png)
 
+
+
+<h2>Lab2B
+
+This Part is much more difficult  than Lab2A...
+
+ In 2B, we are about to implement AppendEntries. Specifically, for leader, it should send new log periodically to each follower(leader maintains each follower's *nextIndex* to send), for followers, check consistency of RPC's logs with attached *prevLog*, if *prevLog* doesn't match local log, reject this append and response to leader
+
+* Fault Tolerance is the core part we should pay much attention to
+* Commit the log to state machine whenever *commitIndex* is increased
+*  We can not emphasize more the importance of stick to paper's figure2 !!!
+
+
+
+<h3> Hints
+
+* I revised my checkHeartBeat() as a timer, and the callback function is the timeOutElection
+  * **I can not sure the exact performance difference between  former design and current one, but there are two point I want to claim**
+  * Using the timer, it can make sure your callback function runs more periodically. **Consider if using goroutine, you will always start a timeout count after last timeout election ends. This time lag may result a livelock**
+* **Make sure timer won't trigger callback when a peer receives RequestVote** or once a leader is elected, some other node starts an election **just because a little time latency to reset timer**, forcing the recently elected leader to abdicate immediately
+
+* Set the election time out a  right  random range
+
+
+
+<h3>Test Result
+
+
+
+![2Btest](..//image//2Btest.png)
+
+​																		*single test*
+
+![2BTestScript](F:\MIT6.824\MIT-6.824\image\2BTestScript.png)
+
+![2BbatchTestResult](F:\MIT6.824\MIT-6.824\image\2BbatchTestResult.png)
+
+​																		*batch test*
