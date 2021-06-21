@@ -126,8 +126,25 @@ This Part is much more difficult  than Lab2A...
 
 ​																		*single test*
 
-![2BTestScript](F:\MIT6.824\MIT-6.824\image\2BTestScript.png)
+![2BTestScript](..\image\2BTestScript.png)
 
-![2BbatchTestResult](F:\MIT6.824\MIT-6.824\image\2BbatchTestResult.png)
+![2BbatchTestResult](..\image\2BbatchTestResult.png)
 
 ​																		*batch test*
+
+
+
+
+
+<h2> Lab2C </h2>
+
+If your former code is implemented well and free of bug, it is easy to complete persist() and readPersist() by reading example in comments.
+
+
+
+<h3>Hints
+
+* Check for 2B and 2A content if your code fails to pass the test.
+* You should do persist() as long as your non-volatile variable is changed
+
+![Lab2Ctest](..\image\Lab2Ctest.png)
