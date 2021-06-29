@@ -47,3 +47,7 @@ This time, I have some new things to write about
 * When you are encountered with a livelock, check your RequestVote handler. I implemented this function mistakenly and led to the follower with up-to-data log cannot win the election on time. (Specifically, you need to make sure your peer convert to follower whenever it receives a RPC whose term is greater than currentTerm)
 * Check if your output channels are blocked and without receivers. Just uses channel with buffer(**Can anybody tell me if go can GC unused channel buffer after both sender and receiver quit?**)
 * Oh, I finally did not revise my election part using condition variable, just used channel.
+
+![Test2](..//image//Test2.png)
+
+​															Result of a new 100 tests
