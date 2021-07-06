@@ -9,11 +9,11 @@ You can find MIT 6.824 Distributed System's course document in [here](http://nil
 
 + [x] lab1--MapReduce
 
-- [x] lab2 -
+- [x] lab2--Raft
   - [x] lab2A
   - [x] lab2B
   - [x] lab2C
-- [x] lab3 -
+- [x] lab3--KVRaft
   - [x] lab3A
   - [x] lab3B
 - [ ] lab4
