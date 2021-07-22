@@ -16,7 +16,9 @@ You can find MIT 6.824 Distributed System's course document in [here](http://nil
 - [x] lab3--KVRaft
   - [x] lab3A
   - [x] lab3B
-- [ ] lab4
+- [x] lab4 Sharded Key/Value Service
+  - [x] Challenge 1
+  - [x] Challenge 2
 
 
 

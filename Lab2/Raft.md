@@ -61,7 +61,7 @@ type Raft struct {
 
 ``` go
 func Make(...) *Raft{
-    setRf()
+    initRf()
     go checkHeartBeat(){
         // if received Leader's HeartBeat then Sleep, nor begin a new election
         time.Sleep()

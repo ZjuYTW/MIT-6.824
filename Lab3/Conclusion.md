@@ -54,6 +54,10 @@ Because detailed Raft design is described in former part, so let's just assume w
 
   **Note:** Because the channel is a FIFO sequence, *Server*'s execution sequence is decided by Raft's push sequence. It's a nice point that we don't need to pay extra attention keep *Raft* and *KVServer* in sync, especially when *Raft* requires for a Snapshot in a very index.
 
+* appMsg Channel with buffer
+  * To make execution more efficient and decouple *Raft* and *KVServer*. We can preallocate a buffer for this channel so *Raft*'s log can be pipelined down into channel.
+  * **Note:**Don't worry about inconsistency, *Server* will still execute in sequence and *Raft* will still get the right index's *Server's* state Snapshot.
+
 <h4>Raft</h4>
 
 * Remember to check your *Raft* first when you encounter a problem!!!(90% bug)
